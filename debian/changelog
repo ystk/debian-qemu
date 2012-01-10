@@ -1,3 +1,9 @@
+qemu (0.12.5+dfsg-3skerlet1) unstable; urgency=low
+
+  * Drop openbios-sparc dependency because it cannot be usable.
+
+ -- Skerlet Project Team <skerlet@swc.toshiba.co.jp>  Tue, 10 Jan 2012 13:52:38 +0900
+
 qemu (0.12.5+dfsg-3) unstable; urgency=medium
 
   * qemu-user-static: 
