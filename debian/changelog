@@ -1,3 +1,166 @@
+qemu (1:2.1+dfsg-11) unstable; urgency=medium
+
+  * bump epoch and reupload to cancel 2.2+dfsg-1exp upload
+    mistakenly done to unstable.  No other changes.
+
+ -- Michael Tokarev <mjt@tls.msk.ru>  Wed, 10 Dec 2014 00:52:28 +0300
+
+qemu (2.1+dfsg-10) unstable; urgency=medium
+
+  * make (debian-specific) x86 data path (with seabios and ipxe
+    in it) non-x86-specific, since other arches use firmware
+    files too (Closes: #772127)
+  * add seabios to Recommends to qemu-system-misc, qemu-system-mips,
+    qemu-system-ppc and qemu-system-sparc packages, because these
+    packages contains emulators using vgabios which is part of
+    seabios package (#772127).
+  * add ipxe-qemu to Recommends to qemu-system-misc, qemu-system-arm,
+    qemu-system-mips, qemu-system-ppc, qemu-system-sparc packages,
+    because these packages contains emulators using network boot
+    roms (#772127), in a similar way.
+
+ -- Michael Tokarev <mjt@tls.msk.ru>  Tue, 09 Dec 2014 13:47:36 +0300
+
+qemu (2.1+dfsg-9) unstable; urgency=high
+
+  * apply upstream patches for CVE-2014-8106
+    (cirrus: insufficient blit region checks)
+    (Closes: #772025 CVE-2014-8106)
+
+ -- Michael Tokarev <mjt@tls.msk.ru>  Thu, 04 Dec 2014 00:10:43 +0300
+
+qemu (2.1+dfsg-8) unstable; urgency=low
+
+  [ Michael Tokarev ]
+  * add Built-Using control field for qemu-user-static package:
+    take contents of qemu-user ${shlibs:Depends} and transform it
+    into list of source packages with versions.  (Closes: #768926)
+  * run remove-alternatives in qemu-system.postinst (the metapkg)
+    too, not only in qemu-system-XX.postinst, to handle upgrades
+    from wheezy (Closes: #768244)
+  * several fixes for debian/qemu-user.1 manpage.  It needs more
+    work, but at least some easy and obvious errors are fixed now.
+    (Closes: #763841)
+  * migration-fix-parameter-validation-on-ram-load.patch from upstream
+    (Closes: #769451 CVE-2014-7840)
+  * fix x86_64 binfmt mask to allow more values in ELF_OSABI field
+    (byte7).  Current gcc/binfmt sometimes produces binaries with
+    this field set to 3 (OSABI_GNU) not 0 (OSABI_SYSV) as used to be.
+    Set mask to 0xfb not 0xff here, to allow 0 (traditional SYSV),
+    1 (HPUX), 2 (NETBSD) or 3 (GNU).  This lets 2 more types than
+    necessary, but qemu will reject wrong types so no harm is done.
+    Some other binfmts ignore this field completely (with mask=0).
+    Maybe some day we'll have 2 different binfmt registrations for
+    the 2 different ABI types.  (Closes: #763043)
+  * usb-host-fix-usb_host_speed_compat-tyops.patch -- fix host usb devices
+    attach, without this patch many USB devices does not work
+  * qdev-monitor-fix-segmentation-fault-on-qdev_device_h.patch - trivial
+    patch from upstream to fix segfault in -device foo,help (Closes: #770880)
+
+  [ Aurelien Jarno ]
+  * Add tcg-mips-fix-store-softmmu-slow-path.patch from upstream to fix
+    TCG support on mips/mipsel hosts (Closes: #769470).
+
+  [ Ian Campbell ]
+  * Backport patch to fix unmapping of persistent grants in the Xen qdisk
+    backend (Closes: #770468).
+
+ -- Michael Tokarev <mjt@tls.msk.ru>  Thu, 27 Nov 2014 18:32:45 +0300
+
+qemu (2.1+dfsg-7) unstable; urgency=high
+
+  * urgency is high due to 2 security fixes
+    (one current and one forgotten in previous release)
+    and because of possible data corruption bugfix
+  * vnc-sanitize-bits_per_pixel-from-the-client-CVE-2014-7815.patch
+    from upstream (Closes: CVE-2014-7815)
+  * fix spelling mistake in previous changelog entry
+  * add two patches from upstream for block/raw-posix.c to work around
+    probs in FS_IOC_FIEMAP ioctl and to prefer seek_hole over fiemap.
+    This should fix a long-standing ghost data corruption observed
+    in various places.
+
+ -- Michael Tokarev <mjt@tls.msk.ru>  Mon, 03 Nov 2014 18:44:34 +0300
+
+qemu (2.1+dfsg-6) unstable; urgency=medium
+
+  * mention closing of CVE-2014-3615 by 2.1.2 (2.1+dfsg-5)
+  * 9p-use-little-endian-format-for-xattr-values.patch (Closes: #755740)
+  * mention closing of #760386
+  * mention closing of more CVEs by 2.1+dfsg-1
+  * recognize ppc64el in qemu-debootstrap (Luca Falavigna) (Closes: #760949)
+  * use dpkg-vendor to let derived distros to use our d/rules
+  * use /usr/share/dpkg/architecture.mk to get DEB_HOST_* and DEB_BUILD_*
+    variables.  This restores cross building support.
+  * use /usr/share/dpkg/buildflags.mk for CFLAGS LDFLAGS &Co
+  * pass -DVENDOR_{DEBIAN,UBUNTU} to compiler
+  * do not treat ppc* and ppc*le as compatible for binfmt registrations
+  * mention ACPI SLIC to RSDT id copying if slic table is supplied,
+    thank you Tim Small for the patch (Closes: #765075)
+  * apply 5 patches from upstream to fix a security issue in
+    vmware-vga (Closes: #765496 CVE-2014-3689)
+  * apply two patches from upstream to make qemu to work with samba4
+    (Closes: #747636)
+
+ -- Michael Tokarev <mjt@tls.msk.ru>  Mon, 03 Nov 2014 18:07:48 +0300
+
+qemu (2.1+dfsg-5) unstable; urgency=medium
+
+  * upstream bugfix release v2.1.2
+    (Closes: #762532 CVE-2014-3640 CVE-2014-5388 CVE-2014-3615)
+  * Add x32 to the list of supported architectures
+    (patch by Thorsten Glaser) (Closes: #760386)
+  * fix wrong reference in kvm.1 (Closes: #761137)
+  * removed patches (applied upstream):
+    l2tp-linux-only.patch
+    ide-only-constrain-read_write-requests-to-drive-size.diff
+    pc-reserve-more-memory-for-acpi.patch
+
+ -- Michael Tokarev <mjt@tls.msk.ru>  Fri, 26 Sep 2014 17:43:26 +0400
+
+qemu (2.1+dfsg-4) unstable; urgency=medium
+
+  * mention libnuma-dev but not enable for now
+  * 9p-readdir.patch: fix readdir in 9p mapped mode (Closes: #755738)
+  * pc-reserve-more-memory-for-acpi.patch: fix linux -kernel not working
+    with new qemu (Closes: #759522)
+  * qemu-options-add-missing--drive-discard-option-to-cmdline-help.diff -
+    documentation fix
+  * mention that 2.1 closed #754336.
+  * move qemu-bridge-helper to /usr/lib/qemu/ subdir (lintian)
+  * debian/binfmt-update-in (Serge Hallyn):
+    - don't run in a container
+    - add ppc64le as target
+  * add apport hook from ubuntu package (ubuntu-only for now)
+
+ -- Michael Tokarev <mjt@tls.msk.ru>  Sun, 31 Aug 2014 09:32:59 +0400
+
+qemu (2.1+dfsg-3) unstable; urgency=medium
+
+  * set SHELL = /bin/sh -e, so that more complex shell constructs
+    in d/rules will fail if any command fail inside
+  * check for pipe2() being a stub too, like utimensat() etc
+  * build-depend on gnutls-dev, not libgnutls*-dev, so the
+    buuld system will pick default gnutls impl (so it works for
+    backports and future versions)
+  * build-depend on libjpeg-dev not libjpeg8-dev
+  * minimum version of seabios is 1.7.5 (Closes: #757958)
+  * ide-only-constrain-read_write-requests-to-drive-size.diff
+    (Closes: #757927)
+  * added use-arch-data-path.patch, to be able to search for binary
+    blobs in several (arch-specific) data directories instead of just one.
+  * removed all blob/firmware symlinks from qemu-system-x86, using
+    arch-specific datapath instead (/usr/share/seabios:/usr/lib/ipxe/qemu)
+  * removed retry-pxe-after-efi.patch and depend on ipxe-qemu which
+    introduced efi boot roms.  qemu should not try to load "wrong"
+    ROM, or else migration will fail due to rom size mismatch.
+  * include /usr/lib/qemu-bridge-helper binary, but not make it setuid
+    due to security concerns outlined in #691138 (Closes: #691138)
+  * make vnc-jpeg not debian-specific
+  * install kvm-spice symlinks on ubuntu
+
+ -- Michael Tokarev <mjt@tls.msk.ru>  Thu, 14 Aug 2014 14:30:24 +0400
+
 qemu (2.1+dfsg-2) unstable; urgency=medium
 
   * l2tp-linux-only.patch: fix FTBFS on kfreebsd
@@ -10,8 +173,16 @@ qemu (2.1+dfsg-2) unstable; urgency=medium
 qemu (2.1+dfsg-1) unstable; urgency=medium
 
   * new upstream release
-    Closes: #739589 CVE-2014-3461
+    Closes: #739589:
+     CVE-2013-4148 CVE-2013-4149 CVE-2013-4150 CVE-2013-4151
+     CVE-2013-4526 CVE-2013-4527 CVE-2013-4528
+     CVE-2013-4530 CVE-2013-4531 CVE-2013-4532 CVE-2013-4533 CVE-2013-4534
+     CVE-2013-4535 CVE-2013-4536 CVE-2013-4537 CVE-2013-4538 CVE-2013-4539
+     CVE-2013-4540 CVE-2013-4541 CVE-2013-4542
+     CVE-2013-6399 CVE-2014-0182 CVE-2014-3461
     Closes: #735618
+    Closes: #754336
+    Closes: CVE-2014-3471 (pcie hotplug/hotunplug)
   * versioned build-depend on libiscsi-dev (>>1.9.0~)
   * added ppc64le user target
   * fix description of qemu-user-binfmt wrt "empty" (Closes: #755988)
