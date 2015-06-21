@@ -1,3 +1,10 @@
+qemu (0.12.5+dfsg-3squeeze5) squeeze-lts; urgency=high
+
+  * fdc-force-the-fifo-access-to-be-in-bounds-CVE-2015-3456.patch
+    (Closes: CVE-2015-3456)
+
+ -- Michael Banck <michael.banck@credativ.de>  Fri, 12 Jun 2015 13:34:20 +0200
+
 qemu (0.12.5+dfsg-3squeeze4) squeeze-security; urgency=high
 
   * fix guest-triggerable buffer overrun in virtio-net device
