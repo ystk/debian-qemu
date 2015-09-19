@@ -1,3 +1,30 @@
+qemu (1:2.1+dfsg-12+deb8u4) jessie-security; urgency=high
+
+  * ne2000-add-checks-to-validate-ring-buffer-pointers-CVE-2015-5279.patch
+    fix for Heap overflow vulnerability in ne2000_receive() function
+    (Closes: #799074 CVE-2015-5279)
+  * ne2000-avoid-infinite-loop-when-receiving-packets-CVE-2015-5278.patch
+    (Closes: #799073 CVE-2015-5278) 
+
+ -- Michael Tokarev <mjt@tls.msk.ru>  Tue, 15 Sep 2015 19:36:48 +0300
+
+qemu (1:2.1+dfsg-12+deb8u3) jessie-security; urgency=high
+
+  * Acknowlege the previous update.  Thank you Salvatore for the hard
+    work you did fixing so many security issues.
+  * rename last patches removing numeric prefixes, so that different series
+    wont intermix with each other, add Bug-Debian: headers.
+  * Add e1000-avoid-infinite-loop-in-transmit-CVE-2015-6815.patch.
+    CVE-2015-6815: net: e1000 infinite loop issue in processing transmit
+    descriptor.  (Closes: #798101 CVE-2015-6815)
+  * Add ide-fix-ATAPI-command-permissions-CVE-2015-6855.patch.
+    CVE-2015-6855: ide: qemu allows arbitrary commands to be sent to an ATAPI
+    device from guest, while illegal comands might have security impact,
+    f.e. WIN_READ_NATIVE_MAX results in divide by zero error.
+    (Closes: CVE-2015-6855)
+
+ -- Michael Tokarev <mjt@tls.msk.ru>  Mon, 07 Sep 2015 16:54:32 +0300
+
 qemu (1:2.1+dfsg-12+deb8u2) jessie-security; urgency=high
 
   * Non-maintainer upload by the Security Team.
