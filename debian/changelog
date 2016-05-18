@@ -1,3 +1,10 @@
+qemu (0.12.5+dfsg-3squeeze5skerlet1) squeeze-lts; urgency=high
+
+  [ Skerlet ]
+  * Same as 0.12.5+dfsg-3skerlet1
+
+ -- Skerlet Project Team <skerlet@swc.toshiba.co.jp>  Wed, 18 May 2016 16:43:35 +0900
+
 qemu (0.12.5+dfsg-3squeeze5) squeeze-lts; urgency=high
 
   * fdc-force-the-fifo-access-to-be-in-bounds-CVE-2015-3456.patch
@@ -38,6 +45,12 @@ qemu (0.12.5+dfsg-3squeeze1) squeeze-proposed-updates; urgency=low
   * mips hosts: fix branch target change during code retranslation.
 
  -- Aurelien Jarno <aurel32@debian.org>  Thu, 17 Mar 2011 22:38:30 +0100
+
+qemu (0.12.5+dfsg-3skerlet1) unstable; urgency=low
+
+  * Drop openbios-sparc dependency because it cannot be usable.
+
+ -- Skerlet Project Team <skerlet@swc.toshiba.co.jp>  Tue, 10 Jan 2012 13:52:38 +0900
 
 qemu (0.12.5+dfsg-3) unstable; urgency=medium
 
