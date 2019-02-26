@@ -1,3 +1,263 @@
+qemu (1:2.1+dfsg-12+deb8u9) jessie-security; urgency=high
+
+  * Non-maintainer upload by the LTS Team.
+  * CVE-2018-19489: 9p: race condition while renaming files on a
+    shared host directory (Closes: #914727).
+  * CVE-2018-19364: 9p: race condition while modifying fid path
+    (Closes: #914599).
+  * CVE-2018-17958: rtl8139: potential oob access due to integer overflow
+    (Closes: #911499).
+
+ -- Hugo Lefeuvre <hle@debian.org>  Tue, 22 Jan 2019 18:10:07 +0100
+
+qemu (1:2.1+dfsg-12+deb8u8) jessie-security; urgency=medium
+
+  * Non-maintainer upload by the LTS Team.
+  * Fix the following issues:
+  * CVE-2016-2391: multiple eof_timers in ohci usb leads to null pointer
+    dereference. Reported by Zuozhi Fzz <zuozhi.fzz@alibaba-inc.com>
+    (Closes:#815009)
+  * CVE-2016-2392: usb: null pointer dereference in remote NDIS control
+    message handling. Reported by Qinghao Tang <luodalongde@gmail.com>
+    (Closes: #815008)
+  * CVE-2016-2538: usb: integer overflow in remote NDIS control message
+    handling. Reported by Qinghao Tang <luodalongde@gmail.com>
+    (Closes: #815680)
+  * CVE-2016-2841: net: ne2000: infinite loop in ne2000_receive. Reported by
+    Yang Hongke <yanghongke@huawei.com>
+    (Closes: #817181)
+  * CVE-2016-2857: net: out of bounds read in net_checksum_calculate. Reported
+    by Liu Ling <liuling-it@360.cn>
+    (Closes: #817182)
+  * CVE-2016-2858: rng-random: arbitrary stack based allocation leading to
+    corruption.
+    (Closes: #817183)
+  * CVE-2016-4001: net: buffer overflow in stellaris_enet emulator. Reported
+    by Oleksandr Bazhaniuk <oleksandr.bazhaniuk@intel.com>
+    (Closes: #821038)
+  * CVE-2016-4002: net: buffer overflow in MIPSnet emulator. Reported by
+    Oleksandr Bazhaniuk.
+    (Closes: #821061)
+  * CVE-2016-4020: i386: leakage of stack memory to guest in kvmvapic.c.
+    Reported by Donghai Zdh.
+    (Closes: #821062)
+  * CVE-2016-4037: usb: Infinite loop vulnerability in usb_ehci using siTD
+    process. Reported by 杜少博 <dushaobo@360.cn>.
+    (Closes: #822344)
+  * CVE-2016-4439: 53C9X Fast SCSI Controller (FSC) support does not properly
+    check command buffer length.
+    (Closes: #824856)
+  * CVE-2016-4441: 53C9X Fast SCSI Controller (FSC) support in QEMU does not
+    properly check DMA length.
+    (Closes: #824856)
+  * CVE-2016-4453: incorrect handling of the VMWare VGA module, that may be
+    used to cause QEMU to crash. Reported by Li Qiang.
+  * CVE-2016-4454: incorrect handling of incorrect handling of the VMWare VGA
+    module, that may be used to obtain host sensitive information or cause
+    QEMU to crash.
+  * CVE-2016-4952: scsi: pvscsi: out-of-bounds access issue. Reported by
+    Li Qiang.
+    (Closes: #825210)
+  * CVE-2016-5105: scsi: megasas: stack information leakage while reading
+    configuration. Reported by Li Qiang.
+    (Closes: #825614)
+  * CVE-2016-5106: scsi: megasas: out-of-bounds write while setting controller
+    properties. Reported by Li Qiang.
+    (Closes: #825615)
+  * CVE-2016-5107: scsi: megasas: out-of-bounds read in megasas_lookup_frame()
+    function. Reported by Li Qiang.
+    (Closes: #825616)
+  * CVE-2016-5238: scsi: esp: OOB write when using non-DMA mode in get_cmd.
+    Reported by Li Qiang.
+    (Closes: #826152)
+  * CVE-2016-5337: scsi: megasas: information leakage in
+    megasas_ctrl_get_info. Reported by Li Qiang.
+    (Closes: #827026)
+  * CVE-2016-5338: scsi: out-of-bounds read/write access while processing
+    ESP_FIFO. Reported by Li Qiang.
+    (Closes: #827024)
+  * CVE-2016-6351: scsi: esp: oob write access while reading ESP command.
+    Reported by Li Qiang.
+    (Closes: #832621)
+  * CVE-2016-6834: infinite loop during packet fragmentation. Reported by
+    Li Qiang.
+    (Closes: #834905)
+  * CVE-2016-6836: Information leak in vmxnet3_complete_packet. Reported by
+    Li Qiang.
+    (Closes: #834944)
+  * CVE-2016-6888: vmxnet: integer overflow in packet initialisation. Reported
+    by Li Qiang.
+    (Closes: #834902)
+  * CVE-2016-7116: 9p: directory traversal flaw in 9p virtio backend. Reported
+    by Felix Wilhelm.
+    (Closes: #836502)
+  * CVE-2016-7155: scsi: pvscsi: OOB read and infinite loop while setting
+    descriptor rings. Reported by Tom Victor and Li Qiang.
+    (Closes: #837174)
+  * CVE-2016-7156: scsi: pvscsi: infintie loop when building SG list. Reported
+    by Li Qiang.
+    (Closes: #837339)
+  * CVE-2016-7161: net: Fix a heap overflow in xlnx.xps-ethernetlite. Reported
+    by Hu Chaojian.
+    (Closes: #838850)
+  * CVE-2016-7170: vmware_vga: out-of-bounds stack memory access when
+    processing svga command. Reported by: Qinghao Tang and Li Qiang.
+    (Closes: #837316)
+  * CVE-2016-7421: scsi: pvscsi: infinite loop when processing IO requests.
+    Reported by Li Qiang.
+    (Closes: #838147)
+  * CVE-2016-7908: net: Infinite loop in mcf_fec_do_tx. Reported by Li Qiang.
+    (Closes: #839835)
+  * CVE-2016-7909: net: pcnet: infinite loop in pcnet_rdra_addr. Reported by
+    Li Qiang.
+    (Closes: #839834)
+  * CVE-2016-8577: 9pfs: host memory leakage in v9fs_read. Reported by
+    Li Qiang.
+    (Closes: #840341)
+  * CVE-2016-8578: 9pfs: potential NULL dereferencein 9pfs routines. Reported
+    by Li Qiang.
+    (Closes: #840340)
+  * CVE-2016-8909: audio: intel-hda: infinite loop in processing dma buffer
+    stream. Reported by Huawei PSIRT.
+    (Closes: #841950)
+  * CVE-2016-8910: net: rtl8139: infinite loop while transmit in C+ mode.
+    Reported by Andrew Henderson.
+    (Closes: #841955)
+  * CVE-2016-9101: net: eepro100 memory leakage at device unplug. Reported by
+    Li Qiang.
+    (Closes: #842455)
+  * CVE-2016-9102 CVE-2016-9103 CVE-2016-9104 CVE-2016-9105 CVE-2016-9106:
+    various Plan 9 File System (9pfs) security issues. Reported by Li Qiang.
+  * CVE-2017-10664: qemu-nbd: server breaks with SIGPIPE upon client abort.
+    (Closes: #866674)
+  * CVE-2018-10839: integer overflow leads to buffer overflow issue. Reported
+    by Daniel Shapira.
+    (Closes: #910431)
+  * CVE-2018-17962: pcnet: integer overflow leads to buffer overflow. Reported
+    by Daniel Shapira.
+    (Closes: #911468)
+  * CVE-2018-17963: net: ignore packets with large size. Reported by Daniel
+    Shapira.
+    (Closes: #911469)
+
+ -- Santiago Ruano Rincón <santiagorr@riseup.net>  Mon, 26 Nov 2018 11:22:21 +0100
+
+qemu (1:2.1+dfsg-12+deb8u7) jessie-security; urgency=medium
+
+  * Non-maintainer upload by the LTS Team.
+  * Fix the following issues:
+  * CVE-2015-8666: Heap-based buffer overflow in QEMU when built with the
+    Q35-chipset-based PC system emulator
+  * CVE-2016-2198: usb: ehci null pointer dereference in ehci_caps_write
+    (Closes: #813193)
+  * CVE-2016-6833: net: vmxnet3: use after free while writing (Closes: #834904)
+  * CVE-2016-6835: buffer overflow in vmxnet_tx_pkt_parse_headers() in vmxnet3 device
+    (Closes: #835031)
+  * CVE-2016-9603: cirrus: heap buffer overflow via vnc connection
+    (Closes: #857744)
+  * CVE-2016-8576: usb: xHCI: infinite loop vulnerability in xhci_ring_fetch
+  * CVE-2016-8667: dma: rc4030 divide by zero error in set_next_tick
+    allowing local guest OS administrators to cause a DoS via a large
+    interval timer reload value.
+    (Closes: #840950)
+  * CVE-2016-8669: char: divide by zero error in serial_update_parameters
+    (Closes: #840945)
+  * CVE-2016-9602: 9p: virtfs allows guest to access host filesystem
+    (Closes: #853006)
+  * CVE-2016-9776: net: mcf_fec: infinite loop while receiving data in
+    mcf_fec_receive
+  * CVE-2016-9907: usb: redirector: memory leakage when destroying
+    redirector.
+    (Closes: #847953)
+  * CVE-2016-9911: usb: ehci: memory leakage in ehci_init_transfer
+    (Closes: #847951)
+  * CVE-2016-9914: 9pfs: add missing cleanup operation in FileOperations
+    (Closes: #847496)
+  * CVE-2016-9915: 9pfs: add missing cleanup operation in the handle
+    backend.
+  * CVE-2016-9916: 9pfs: add missing cleanup operation in the proxy
+    backend driver.
+  * CVE-2016-9921, CVE-2016-9922: display: cirrus_vga: a divide by zero in
+    cirrus_do_copy
+    (Closes: #847960)
+  * CVE-2016-10155: Memory leak in hw/watchdog/wdt_i6300esb.c allowing
+    local guest OS privileged users to cause a denial of service (host
+    memory consumption and QEMU process crash) via a large number of
+    device unplug operations.
+    (Closes: #852232)
+  * CVE-2017-2615: cirrus: out-of-bounds access issue
+    (Closes: 854731)
+  * CVE-2017-2620: cirrus_bitblt_cputovideo does not check if memory region is
+    safe
+    (Closes: #855791)
+  * CVE-2017-5525: memory leakage in ac97 device
+    (Closes: #856399)
+  * CVE-2017-5526: memory leakage in es1370 device
+    (Closes: #851910)
+  * CVE-2017-5579: serial: host memory leakage 16550A UART emulation
+    (Closes: #853002)
+  * CVE-2017-5667: sd: sdhci: check data length during dma_memory_read
+    (Closes: #853996)
+  * CVE-2017-5715: mitigations against the Spectre v2 vulnerability.
+    (Closes: #886532)
+  * CVE-2017-5856: Memory leak in the megasas_handle_dcmd function in
+    hw/scsi/megasas.cc
+    (Closes: #853996)
+  * CVE-2017-5987: sd: infinite loop issue in multi block transfers
+    (Closes: #855159)
+  * CVE-2017-5973: infinite loop while doing control transfer in
+    xhci_kick_epctx
+    (Closes: #855611)
+  * CVE-2017-6505: infinite loop issue in ohci_service_ed_list
+    (Closes: #856969)
+  * CVE-2017-7377: 9pfs: host memory leakage via v9fs_create
+    (Closes: #859854)
+  * CVE-2017-7471: improper access control issue
+    (Closes: #860785)
+  * CVE-2017-7493: 9pfs access control issue
+  * CVE-2017-7718: cirrus out-of-bounds access issue
+  * CVE-2017-7980: cirrus: heap-based buffer overflow
+  * CVE-2017-8086: 9pfs: host memory leakage via v9pfs_list_xattr
+    (Closes: #861348)
+  * CVE-2017-8112: vmw_pvscsi: infinite loop in pvscsi_log2
+    (Closes: #861351)
+  * CVE-2017-8309: audio: host memory leakage via capture buffer
+    (Closes: #862280)
+  * CVE-2017-8379: input: host memory leakage via keyboard
+    (Closes: #862289)
+  * CVE-2017-9330: usb: ohci: infinite loop due to incorrect return value
+    (Closes: #863943)
+  * CVE-2017-9373 ide: ahci host memory leakage during hotunplug.
+    (Closes: #864216)
+    CVE-2017-9374: usb: ehci host memory leakage during hotunplug
+    (Closes: #864216, #864568)
+  * CVE-2017-9503: megasas: null pointer dereference while processing
+    megasas command
+    (Closes: 865754)
+  * CVE-2017-10806: usb-redirect: stack buffer overflow in debug logging
+    (Closes: #867751)
+  * CVE-2017-10911: xen disk may leak stack data via response ring
+    (Closes: #869706)
+  * CVE-2017-11434: slirp: out-of-bounds read while parsing dhcp options
+    (Closes: #869171)
+  * CVE-2017-14167: i386: multiboot OOB access while loading guest kernel
+    image
+    (Closes: #874606)
+  * CVE-2017-15038: 9p: virtfs: information disclosure when reading
+    extended attributes
+    (Closes: #877890)
+  * CVE-2017-15289: cirrus: OOB access issue in mode4and5 write functions
+    (Closes: #880832)
+  * CVE-2017-16845: ps2: information leakage via post_load routine
+    (Closes: #882136)
+  * CVE-2017-18030: cirrus out-of-bounds array access
+  * CVE-2017-18043: Integer overflow in the macro ROUND_UP (n, d)
+  * CVE-2018-5683: Out-of-bounds read in vga_draw_text routine
+    (Closes: #887392)
+  * CVE-2018-7550: incorrect handling of multiboot (Closes: #892041)
+
+ -- Santiago Ruano Rincón <santiagorr@riseup.net>  Wed, 05 Sep 2018 16:25:56 +0200
+
 qemu (1:2.1+dfsg-12+deb8u6) jessie-security; urgency=high
 
   * Non-maintainer upload by the Security Team.
