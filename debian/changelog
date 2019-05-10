@@ -1,3 +1,15 @@
+qemu (1:2.1+dfsg-12+deb8u11) jessie-security; urgency=medium
+
+  * Non-maintainer upload by the LTS Team.
+  * CVE-2018-20815: information disclosure in tcp_emu().
+  * CVE-2019-9824: heap buffer overflow in load_device_tree().
+  * CVE-2018-11806: heap-based buffer overflow via incoming fragmented
+    datagrams (Closes: #901017).
+  * CVE-2018-18849: out-of-bounds access by triggering an invalid msg_len
+    value in the lsi53c895a host bus adapter (Closes: #912535).
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Tue, 02 Apr 2019 11:03:28 +0200
+
 qemu (1:2.1+dfsg-12+deb8u10) jessie-security; urgency=high
 
   * Non-maintainer upload by the LTS Team.

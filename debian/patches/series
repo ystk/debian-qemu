@@ -266,3 +266,10 @@ CVE-2018-17958.patch
 CVE-2019-6778.patch
 CVE-2018-16872.patch
 CVE-2018-12617.patch
+
+add_load_image_size.patch
+CVE-2018-20815.patch
+
+CVE-2019-9824.patch
+CVE-2018-11806.patch
+CVE-2018-18849.patch
