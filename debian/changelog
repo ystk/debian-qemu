@@ -1,3 +1,33 @@
+qemu (1:2.1+dfsg-12+deb8u12) jessie-security; urgency=medium
+
+  * Non-maintainer upload by the LTS team.
+
+  [Mike Gabriel]
+  * CVE-2017-9375: Track xhci_kick_ep processing being active in a variable.
+    Check the variable at the beginning of xhci_kick_ep. Add an assert right
+    before processing the kick.
+  * CVE-2019-12155: qxl: Check release info object. When releasing spice
+    resources in release_resource() routine, if release info object
+    'ext.info' is null, it leads to null pointer dereference. Add check
+    to avoid it.
+  * CVE-2016-5403: virtio: error out if guest exceeds virtqueue size. Plus
+    set vq->inuse correctly at various places.
+  * CVE-2016-5126: block/iscsi: avoid potential overflow of acb->task->cdb.
+  * Remove unused/redundant patch files.
+
+  [Sylvain Beucler]
+  * CVE-2019-12068: scsi: lsi: exit infinite loop while executing script
+  * CVE-2019-13164: qemu-bridge-helper.c in QEMU 4.0.0 does not ensure
+    that a network interface name (obtained from bridge.conf or a
+    --br=bridge option) is limited to the IFNAMSIZ size, which can
+    lead to an ACL bypass.
+  * CVE-2019-14378: ip_reass in ip_input.c in libslirp has a
+    heap-based buffer overflow via a large packet because it
+    mishandles a case involving the first fragment.
+  * CVE-2019-15890: libslirp has a use-after-free in ip_reass in ip_input.c.
+
+ -- Sylvain Beucler <beuc@debian.org>  Wed, 11 Sep 2019 11:56:13 +0200
+
 qemu (1:2.1+dfsg-12+deb8u11) jessie-security; urgency=medium
 
   * Non-maintainer upload by the LTS Team.
