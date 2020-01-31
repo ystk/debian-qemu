@@ -1,3 +1,14 @@
+qemu (1:2.1+dfsg-12+deb8u13) jessie-security; urgency=high
+
+  * Non-maintainer upload by the LTS team.
+  * Add patch to
+    - [slirp:] use correct size while emulating commands,
+    - [slirp:] use correct size while emulating IRC commands, and
+    - [tcp_emu:] fix oob access.
+    (Fixes: CVE-2020-7039) (Closes: #949085)
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Sun, 19 Jan 2020 15:55:23 +0530
+
 qemu (1:2.1+dfsg-12+deb8u12) jessie-security; urgency=medium
 
   * Non-maintainer upload by the LTS team.
