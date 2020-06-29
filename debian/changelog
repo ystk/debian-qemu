@@ -1,3 +1,17 @@
+qemu (1:2.1+dfsg-12+deb8u15) jessie-security; urgency=medium
+
+  * Non-maintainer upload by the LTS team.
+  * CVE-2020-1983: slirp: Fix use-after-free in ip_reass().
+  * CVE-2020-13361: es1370_transfer_audio in hw/audio/es1370.c
+    allowed guest OS users to trigger an out-of-bounds access
+    during an es1370_write() operation.
+  * CVE-2020-13362: megasas_lookup_frame in hw/scsi/megasas.c had
+    an out-of-bounds read via a crafted reply_queue_head field from
+    a guest OS user.
+  * CVE-2020-13765: hw/core/loader: Fix possible crash in rom_copy().
+
+ -- Adrian Bunk <bunk@debian.org>  Sun, 28 Jun 2020 22:54:59 +0300
+
 qemu (1:2.1+dfsg-12+deb8u14) jessie-security; urgency=medium
 
   * Non-maintainer upload by the LTS team.
