@@ -1,3 +1,91 @@
+qemu (1:2.1+dfsg-12+deb8u19) jessie-security; urgency=high
+
+  * Non-maintainer upload by the ELTS Security Team.
+  * CVE-2020-11947: iscsi_aio_ioctl_cb in block/iscsi.c in QEMU has a
+    heap-based buffer over-read that may disclose unrelated information
+    from process memory to an attacker.
+  * CVE-2020-15469: a MemoryRegionOps object may lack read/write callback
+    methods, leading to a NULL pointer dereference.
+  * CVE-2020-15859: QEMU has a use-after-free in hw/net/e1000e_core.c
+    because a guest OS user can trigger an e1000e packet with the data's
+    address set to the e1000e's MMIO address. Note: QEMU 2.1 doesn't ship
+    e1000e but the fix addresses the same class of issue in all NICs.
+  * CVE-2020-25084: QEMU has a use-after-free in hw/usb/hcd-xhci.c because
+    the usb_packet_map return value is not checked.
+  * CVE-2020-29130: slirp.c has a buffer over-read because it tries to
+    read a certain amount of header data even if that exceeds the total
+    packet length.
+  * CVE-2020-29443: ide_atapi_cmd_reply_end in hw/ide/atapi.c allows
+    out-of-bounds read access because a buffer index is not validated.
+  * CVE-2021-20181: 9pfs: ZDI-CAN-10904: QEMU Plan 9 file system TOCTOU
+    privilege escalation vulnerability.
+  * CVE-2021-20221: aarch64: GIC: out-of-bound heap buffer access via an
+    interrupt ID field.
+
+ -- Sylvain Beucler <beuc@debian.org>  Fri, 12 Feb 2021 14:11:50 +0100
+
+qemu (1:2.1+dfsg-12+deb8u18) jessie-security; urgency=high
+
+  * Non-maintainer upload by the ELTS Team. 
+  * CVE-2020-27617
+    Using a crafted network packet, a guest OS user might trigger an
+    assertion failure and thus crash qemu.
+  * CVE-2020-25723
+    An assertion failure might happen after not handling
+    the result of 'usb_packet_map'.
+  * CVE-2020-25625
+    Handling of retired OHCI transfer descriptors(TD), might result
+    in an infinite loop if the TD was already processed and holds
+    an error code.
+  * CVE-2020-25624
+    Handling of OHCI transfer descriptors(TD), might result in
+    out-of-bounds access issues, when trusting values supplied
+    by host controller drivers without additional checks.
+  * CVE-2020-25085
+    Doing multi block SDMA with transfer block size exceeding the
+    fifo buffer size might result in an OOB access issue, which
+    can be triggered by a guest user and crash qemu.
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Sun, 29 Nov 2020 12:03:02 +0100
+
+qemu (1:2.1+dfsg-12+deb8u17) jessie-security; urgency=high
+
+  * Non-maintainer upload by the ELTS Security Team.
+  * CVE-2019-20382: memory leak in zrle_compress_data in ui/vnc-enc-zrle.c
+    during a VNC disconnect operation because libz is misused, resulting
+    in a situation where memory allocated in deflateInit2 is not freed in
+    deflateEnd.
+  * CVE-2020-13253: sd_wp_addr in hw/sd/sd.c uses an unvalidated address,
+    which leads to an out-of-bounds read during sdhci_write()
+    operations. A guest OS user can crash the QEMU process.
+  * CVE-2020-13754: hw/pci/msix.c allows guest OS users to trigger an
+    out-of-bounds access via a crafted address in an msi-x mmio operation.
+  * CVE-2020-14364: an out-of-bounds read/write access flaw was found in
+    the USB emulator. This issue occurs while processing USB packets from
+    a guest when USBDevice 'setup_len' exceeds its 'data_buf[4096]' in the
+    do_token_in, do_token_out routines. This flaw allows a guest user to
+    crash the QEMU process, resulting in a denial of service, or the
+    potential execution of arbitrary code with the privileges of the QEMU
+    process on the host.
+  * CVE-2020-16092: an assertion failure can occur in the network packet
+    processing. This issue affects the vmxnet3 network devices. A
+    malicious guest user/process could use this flaw to abort the QEMU
+    process on the host, resulting in a denial of service condition in
+    net_tx_pkt_add_raw_fragment in hw/net/net_tx_pkt.c.
+
+ -- Sylvain Beucler <beuc@debian.org>  Sat, 12 Sep 2020 15:19:21 +0200
+
+qemu (1:2.1+dfsg-12+deb8u16) jessie-security; urgency=high
+
+  * Non-maintainer upload by the ELTS team.
+  * Add patch to fix:
+    - CVE-2020-13659: exec: set map length to zero when returning
+      NULL.
+    - CVE-2020-15863: hw/net/xgmac: Fix buffer overflow in
+      xgmac_enet_send().
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Sat, 25 Jul 2020 18:13:54 +0530
+
 qemu (1:2.1+dfsg-12+deb8u15) jessie-security; urgency=medium
 
   * Non-maintainer upload by the LTS team.
