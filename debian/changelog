@@ -1,3 +1,35 @@
+qemu (1:2.1+dfsg-12+deb8u20) jessie-security; urgency=high
+
+  * Non-maintainer upload by the ELTS team.
+  * Fix CVE-2021-20257:
+    net: e1000: infinite loop while processing transmit descriptors
+  * Fix CVE-2021-20255:
+    A stack overflow via an infinite recursion vulnerability was found in the
+    eepro100 i8255x device emulator of QEMU. This issue occurs while processing
+    controller commands due to a DMA reentry issue. This flaw allows a guest
+    user or process to consume CPU cycles or crash the QEMU process on the
+    host, resulting in a denial of service.
+  * Fix CVE-2021-20203:
+    An integer overflow issue was found in the vmxnet3 NIC emulator of the QEMU
+    for versions up to v5.2.0. It may occur if a guest was to supply invalid
+    values for rx/tx queue size or other NIC parameters. A privileged guest
+    user may use this flaw to crash the QEMU process on the host resulting in
+    DoS scenario.
+  * Fix CVE-2021-3416:
+    A potential stack overflow via infinite loop issue was found in various NIC
+    emulators of QEMU in versions up to and including 5.2.0. The issue occurs
+    in loopback mode of a NIC wherein reentrant DMA checks get bypassed. A
+    guest user/process may use this flaw to consume CPU cycles or crash the
+    QEMU process on the host resulting in DoS scenario.
+  * Fix CVE-2021-3416:
+    The patch for CVE-2020-17380/CVE-2020-25085 was found to be ineffective,
+    thus making QEMU vulnerable to the out-of-bounds read/write access issues
+    previously found in the SDHCI controller emulation code. This flaw allows a
+    malicious privileged guest to crash the QEMU process on the host, resulting
+    in a denial of service or potential code execution.
+
+ -- Markus Koschany <apo@debian.org>  Wed, 31 Mar 2021 17:28:56 +0200
+
 qemu (1:2.1+dfsg-12+deb8u19) jessie-security; urgency=high
 
   * Non-maintainer upload by the ELTS Security Team.
