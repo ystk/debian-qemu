@@ -1,3 +1,12 @@
+qemu (1:2.1+dfsg-12+deb8u22) jessie-security; urgency=high
+
+  * Non-maintainer upload by the ELTS team.
+  * Revert patch for CVE-2021-3592:
+    It was found that the patch for CVE-2021-3592 introduced a regression which
+    prevented ssh connections to the host system. See Debian bug #994080.
+
+ -- Markus Koschany <apo@debian.org>  Sat, 11 Sep 2021 23:03:39 +0200
+
 qemu (1:2.1+dfsg-12+deb8u21) jessie-security; urgency=high
 
   * Non-maintainer upload by the ELTS team.
