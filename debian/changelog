@@ -1,3 +1,20 @@
+qemu (1:2.1+dfsg-12+deb8u23) jessie-security; urgency=medium
+
+  * Non-maintainer upload by the ELTS team.
+  * CVE-2021-4206: integer overflow leading to heap buffer overflow write
+    in the QXL display driver's cursor_alloc.
+  * CVE-2021-4207: heap buffer overflow write due to race condition when
+    requesting the cursor size in the QXL display driver.
+  * CVE-2022-0216: use after free in the LSI53C895A SCSI host bus adapter.
+  * CVE-2021-3507: heap buffer overflow in the floppy disk emulator.
+  * CVE-2020-35504: null pointer dereference in the SCSI emulation.
+  * CVE-2020-35505: null pointer dereference in the am53c974 SCSI host bus
+    adapter.
+  * CVE-2021-3930: denial of service via off-by-one error in the SCSI
+    device emulation.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Mon, 17 Oct 2022 12:33:25 +0200
+
 qemu (1:2.1+dfsg-12+deb8u22) jessie-security; urgency=high
 
   * Non-maintainer upload by the ELTS team.
